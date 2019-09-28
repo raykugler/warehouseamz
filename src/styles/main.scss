@@ -1,0 +1,11 @@
+@import './lanes.scss';
+@import './dsp_menu.scss';
+
+.main_holder{
+    height: max-content;
+    width: max-content;
+    background-color: #F2EFE4;
+    display: grid;
+    grid-template-columns: 55px 1fr 1fr 1fr 1fr 1fr 1fr 35px;
+    grid-template-rows: 80px 1fr 1fr 1fr 1fr 1fr 35px;
+}

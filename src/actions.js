@@ -1,0 +1,9 @@
+export const SET_MAIN = 'SET_MAIN';
+export const SET_LOGIN = 'SET_LOGIN';
+export const SET_DISPLAY = 'SET_DISPLAY';
+export const SET_LOCATIONS = 'SET_LOCATION';
+export const SET_ROUTES = 'SET_ROUTES';
+export const SET_MERGED = 'SET_MERGED';
+export const SET_DSP_MENU = 'SET_DSP_MENU';
+export const SET_DISPLAY_DATA = 'SET_DISPLAY_DATA';
+export const SET_SELECTED_DSPS = 'SET_SELECTED_DSPS';

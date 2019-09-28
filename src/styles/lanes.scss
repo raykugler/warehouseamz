@@ -1,0 +1,73 @@
+.stage_holder{
+    grid-column: 2/-2;
+    grid-row: 2/-2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 30px 1fr;
+}
+.lanes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+#lane_one{
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: row;
+    background-color: #99B6F2;
+}
+#lane_two{
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    display: flex;
+    flex-direction: row;
+    background-color: #99B6F2;
+}
+.belt{
+    grid-column: 1/-1;
+}
+.stagingArea{
+    display: flex;
+    flex-direction: column;
+    width: 80px;
+    height: 410px;
+    border: 1px solid black;
+    border-bottom-width: 4px;
+}
+.stagingNumber{
+    grid-column: 1/2;
+    grid-row: 1/-1;
+    text-align: center;
+    font-family: 'Poppins';
+    background: none;
+	color: inherit;
+    border: none;
+    color: black;
+    padding: 0;
+    height: 30px;
+    font-size: 20px;
+}
+.plannedRoutes{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.racK_count_holder{
+
+}
+.routeButton{
+    outline: inherit;
+    border-radius: 14px;
+    background-color: rgb(198, 69, 23);
+    width: 49px;
+    height: 52px;
+    border: none;
+    padding: 0;
+    color: white;
+    font-weight: normal;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 9px;
+}
