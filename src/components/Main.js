@@ -39,7 +39,7 @@ class Main extends Component {
     render(){
         return(
             <div className='main_holder'>
-                <DSPMenu />
+            
                 <Lanes />
                 
             </div>

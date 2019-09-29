@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { displayTest } from '../actionCreators';
+import DSPMenu from './DSPMenu';
 
 
 class Lanes extends Component {
@@ -22,7 +23,14 @@ class Lanes extends Component {
     mapMaker=()=>{
         console.log(`display: ${this.props.displayData}`)
         console.log(this.props.selectedDSPS)        
-        
+        let lane_one = document.getElementById('lane_one');
+        let lane_two = document.getElementById('lane_two');
+        while (lane_one.firstChild) {
+            lane_one.removeChild(lane_one.firstChild);
+          }
+          while (lane_two.firstChild) {
+            lane_two.removeChild(lane_two.firstChild);
+          }
         let mergedData = this.props.mergedData;
         
         for(let i = 0; i < mergedData.lanes.length; i++){
@@ -48,6 +56,7 @@ class Lanes extends Component {
                 let gatheredRoutes = [];
      
                 for(let m = 0; m < currentRoutes.length; m++){
+                    if(this.props.selectedDSPS.includes(currentRoutes[m].dsp)){
                     let dsp = currentRoutes[m].dsp;
                     let routeCode = currentRoutes[m].routeCode;
                     let uniqueID = currentRoutes[m]._id;
@@ -69,11 +78,12 @@ class Lanes extends Component {
                           id: uniqueID,
                         }
                         gatheredRoutes.push(localRouteData);                
-    
+                    }
             }
             
             if (i === 1) {
               let lane = document.getElementById('lane_two');
+              
                   lane.appendChild(stagingArea);
         } else {
               let lane = document.getElementById('lane_one');
@@ -88,9 +98,9 @@ class Lanes extends Component {
     render(){
         return(
             <section className='stage_holder'>
-                
+                <DSPMenu mapMaker={this.mapMaker}/>
                 <section className='lane' id='lane_one'></section>
-
+                <div>{this.props.selectedDSPS}</div>
                 <div className='belt'><p>CONVEYOR BELT</p></div>
 
                 <section className='lane' id='lane_two'></section>

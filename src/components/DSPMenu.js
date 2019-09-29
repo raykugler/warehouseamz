@@ -7,9 +7,7 @@ import { setDSPData, setSelectedDSPS  } from '../actionCreators';
 class DSPMenu extends Component {
     constructor(props){
         super(props)
-        this.state ={
-            dsps: '',
-        }
+
         setTimeout(this.dspFilter,100)
     }
     
@@ -131,6 +129,7 @@ var dsp_table = document.getElementById("dsp_menu_id");
 
         this.props.sendSelectedDSPS(selected)
         console.log(this.props.selectedDSPS)
+        setTimeout(this.props.mapMaker,200);
     }
 
     render(){
