@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { displayTest } from '../actionCreators';
 import DSPMenu from './DSPMenu';
+import {colors} from './colors';
 
 
 class Lanes extends Component {
     constructor(props){
         super(props)
-
+console.log(colors)
     }
     
     componentDidMount(){
@@ -70,6 +71,10 @@ class Lanes extends Component {
                         routeButton.appendChild(routeNumber);
                         routeButton.appendChild(rack_count_holder)
                         routeButton.classList.add('routeButton');
+                        const result = colors.filter(color => color.dsp === dsp);
+                        console.log(result[0].color)
+                        routeButton.style.backgroundColor = result[0].backgroundColor;
+                        routeButton.style.color = result[0].color;
                         routeButton.addEventListener('click', e => this.props.preModalOpen(routeCode,'route',uniqueID));             
                         plannedRoutes.appendChild(routeButton);
                         let localRouteData = {
