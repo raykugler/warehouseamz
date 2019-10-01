@@ -2,10 +2,15 @@
 @import './dsp_menu.scss';
 
 .main_holder{
-    height: max-content;
-    width: max-content;
+    height: 100%;
+    width: 100vw;
     background-color: #F2EFE4;
     display: grid;
     grid-template-columns: 55px 1fr 1fr 1fr 1fr 1fr 1fr 35px;
-    grid-template-rows: 80px 1fr 1fr 1fr 1fr 1fr 35px;
+    grid-template-rows: 130px 1fr 1fr 1fr 1fr 1fr 35px;
+}
+
+#root{
+    height: 100vh;
+    width: 100vw;
 }

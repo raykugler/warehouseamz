@@ -136,7 +136,7 @@ var dsp_table = document.getElementById("dsp_menu_id");
         return(
             <section className='dsp_menu_holder' id='dsp_menu_id'>
 
-            <button onClick={e=>this.getSelected()}>FILTER</button>
+            <button onClick={e=>this.getSelected()} className='filterButton'>FILTER</button>
             </section>
     );
 }}

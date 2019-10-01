@@ -4,19 +4,66 @@ import {connect} from 'react-redux';
 import { routeData} from './routeData';
 import { displayTest, setLocations, setRoutes, setMerged } from '../actionCreators';
 import Lanes  from  './Lanes';
+import Modal from 'react-modal';
 import DSPMenu from './DSPMenu';
 import { SET_SELECTED_DSPS } from '../actions';
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)',
+      height                : '600px',
+      width                 : '400px',
+    }
+  };
 
+Modal.setAppElement('#root')
 class Main extends Component {
     constructor(props){
         super(props)
-
+        this.state = {
+            modalIsOpen: false
+          };
+          
         this.props.sendLocations(map_data);    
         this.props.sendRoutes(routeData);    
         setTimeout(this.merge, 100)
     }
 
+preModalOpen=(e)=>{
 
+let mdata = this.props.mergedData.lanes[0].locations;
+let ddata = this.props.mergedData.lanes[1].locations;
+
+let areaRoutes = '';
+const result = mdata.filter(mdat => mdat.stagingLocation === e);
+if (result.length > 0) {
+    areaRoutes = result[0].routes;
+ }
+
+const dresult = ddata.filter(ddat => ddat.stagingLocation === e);
+if (dresult.length > 0){
+    areaRoutes = dresult[0].routes
+}
+console.log(areaRoutes)
+this.openModal();
+}
+
+openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+//   afterOpenModal() {
+//     // references are now sync'd and can be accessed.
+//     this.subtitle.style.color = '#f00';
+//   }
+
+  closeModal=()=> {
+    this.setState({modalIsOpen: false});
+  }
     merge= () => {
         const routes = this.props.routes;
         const locations = this.props.locations;
@@ -39,8 +86,17 @@ class Main extends Component {
     render(){
         return(
             <div className='main_holder'>
-            
-                <Lanes />
+             <Modal
+
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+        >
+              <button onClick={this.closeModal}>close</button>
+        </Modal>
+                <Lanes preModalOpen={this.preModalOpen}/>
                 
             </div>
     );

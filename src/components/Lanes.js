@@ -64,18 +64,31 @@ console.log(colors)
                     let rackCount = currentRoutes[m].rack_count;
                     let rack_count_holder = document.createElement('DIV');
                         rack_count_holder.classList.add('rack_count_holder');
-                    let rack_count_text = document.createTextNode(rackCount);
-                        rack_count_holder.appendChild(rack_count_text);
+                //    let rack_count_text = document.createTextNode(rackCount);
+                  //      rack_count_holder.appendChild(rack_count_text);
                     let routeButton = document.createElement('BUTTON');
-                    let routeNumber = document.createTextNode(`${dsp} ${routeCode}`);
-                        routeButton.appendChild(routeNumber);
-                        routeButton.appendChild(rack_count_holder)
+ 
+                    let routeDSP = document.createElement('P');    
+                        routeDSP.classList.add('routeDSP');
+                    let routeDSPtext = document.createTextNode(`${dsp}`);
+                        routeDSP.appendChild(routeDSPtext);    
+
+                    let routeCodeHolder = document.createElement('P');
+                        routeCodeHolder.classList.add('routeCodeHolder')    
+                    let routeCodeText = document.createTextNode(`${routeCode}`);
+                        routeCodeHolder.appendChild(routeCodeText);    
+                    
+                    
+                        routeButton.appendChild(routeDSP);
+                        routeButton.appendChild(routeCodeHolder);
+                        
+                        //routeButton.appendChild(rack_count_holder)
                         routeButton.classList.add('routeButton');
                         const result = colors.filter(color => color.dsp === dsp);
-                        console.log(result[0].color)
+                
                         routeButton.style.backgroundColor = result[0].backgroundColor;
                         routeButton.style.color = result[0].color;
-                        routeButton.addEventListener('click', e => this.props.preModalOpen(routeCode,'route',uniqueID));             
+                        routeButton.addEventListener('click', e => this.props.preModalOpen(currentArea));             
                         plannedRoutes.appendChild(routeButton);
                         let localRouteData = {
                           route: routeCode,
@@ -86,7 +99,7 @@ console.log(colors)
                     }
             }
             
-            if (i === 1) {
+            if (i === 0) {
               let lane = document.getElementById('lane_two');
               
                   lane.appendChild(stagingArea);
@@ -105,7 +118,7 @@ console.log(colors)
             <section className='stage_holder'>
                 <DSPMenu mapMaker={this.mapMaker}/>
                 <section className='lane' id='lane_one'></section>
-                <div>{this.props.selectedDSPS}</div>
+
                 <div className='belt'><p>CONVEYOR BELT</p></div>
 
                 <section className='lane' id='lane_two'></section>
