@@ -1,5 +1,5 @@
 
-import { SET_LOGIN, SET_DISPLAY, SET_LOCATIONS, SET_ROUTES, SET_MERGED, SET_DISPLAY_DATA, SET_DSP_MENU, SET_SELECTED_DSPS } from './actions';
+import { SET_LOGIN, SET_DISPLAY, SET_LOCATIONS, SET_ROUTES, SET_MERGED, SET_DISPLAY_DATA, SET_DSP_MENU, SET_SELECTED_DSPS, SET_MODAL_INFO } from './actions';
 const DEFAULT_STATE = {
       isLoggedIn: true ,
       displaySample: 'KLKLK',
@@ -8,7 +8,8 @@ const DEFAULT_STATE = {
       mergedData: 'jjj',
       displayData: 'all',
       dspData: '',
-      selectedDSPS: []
+      selectedDSPS: [],
+      modalInfo: [],
 };
 const logIn = (state, action) => Object.assign({}, state, { isLoggedIn: action.payload});
 const displayChange = (state, action) => Object.assign({}, state, { displaySample: action.payload});
@@ -18,7 +19,7 @@ const setMerged =(state, action) => Object.assign({}, state, {mergedData: action
 const setDisplayed = (state, action) => Object.assign({}, state, { displayData: action.payload});
 const setDSPData = (state, action) => Object.assign({}, state, { dspData: action.payload});
 const setSelectedDSPS = (state, action) => Object.assign({}, state, { selectedDSPS: action.payload});
-
+const setModalInfo = (state, action) => Object.assign({}, state, {modalInfo: action.payload});
 const rootReducer = (state = DEFAULT_STATE, action) => {
     switch(action.type) {
         case SET_LOGIN: 
@@ -37,6 +38,8 @@ const rootReducer = (state = DEFAULT_STATE, action) => {
             return setDSPData(state, action);
         case SET_SELECTED_DSPS:
             return setSelectedDSPS(state, action);
+        case SET_MODAL_INFO:
+            return setModalInfo(state, action);
         default:
             return state;
     }

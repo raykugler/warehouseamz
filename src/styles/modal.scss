@@ -3,3 +3,45 @@
     background-color: black;
     height: 200px;
 }
+
+.modalHolder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.routeHolder{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-bottom: 30px;
+
+}
+.routeCodeTextHolder{
+    grid-column: 1/2;
+    height: 60px;
+    font-size: 40px;
+    //width: 150px;
+    justify-self: center;
+    text-align: center;
+    border: 1px solid black;
+}
+.dspTextHolder{
+    grid-column: 2/3;
+    height: 60px;
+    font-size: 40px;
+    //width: 150px;
+    justify-self: center;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.routeLocation{
+    grid-column: 3/4;
+    height: 60px;
+    font-size: 40px;
+    //width: 150px;
+    justify-self: baseline;
+    text-align: center;
+    border: 1px solid black ;
+}

@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import { map_data } from './data';
 import {connect} from 'react-redux';
 import { routeData} from './routeData';
-import { displayTest, setLocations, setRoutes, setMerged } from '../actionCreators';
+import { displayTest, setLocations, setRoutes, setMerged, setModalInfo } from '../actionCreators';
 import Lanes  from  './Lanes';
 import Modal from 'react-modal';
 import DSPMenu from './DSPMenu';
 import { SET_SELECTED_DSPS } from '../actions';
+import StageModal from './StageModal';
 const customStyles = {
     content : {
       top                   : '50%',
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',
-      marginRight           : '-50%',
+      //marginRight           : '-50%',
       transform             : 'translate(-50%, -50%)',
-      height                : '600px',
-      width                 : '400px',
+      height                : '700px',
+      width                 : '800px',
     }
   };
 
@@ -34,26 +35,26 @@ class Main extends Component {
     }
 
 preModalOpen=(e)=>{
+    let mdata = this.props.mergedData.lanes[0].locations;
+    let ddata = this.props.mergedData.lanes[1].locations;
+    let areaRoutes = '';
+    const result = mdata.filter(mdat => mdat.stagingLocation === e);
+        if (result.length > 0) {
+            areaRoutes = result[0].routes;
+        }
 
-let mdata = this.props.mergedData.lanes[0].locations;
-let ddata = this.props.mergedData.lanes[1].locations;
+    const dresult = ddata.filter(ddat => ddat.stagingLocation === e);
+        if (dresult.length > 0){
+            areaRoutes = dresult[0].routes
+        }
 
-let areaRoutes = '';
-const result = mdata.filter(mdat => mdat.stagingLocation === e);
-if (result.length > 0) {
-    areaRoutes = result[0].routes;
- }
-
-const dresult = ddata.filter(ddat => ddat.stagingLocation === e);
-if (dresult.length > 0){
-    areaRoutes = dresult[0].routes
-}
-console.log(areaRoutes)
-this.openModal();
+    this.props.sendModalInfo(areaRoutes);
+    this.openModal();
 }
 
 openModal() {
     this.setState({modalIsOpen: true});
+
   }
 
 //   afterOpenModal() {
@@ -94,6 +95,7 @@ openModal() {
           style={customStyles}
           contentLabel="Example Modal"
         >
+            <StageModal />
               <button onClick={this.closeModal}>close</button>
         </Modal>
                 <Lanes preModalOpen={this.preModalOpen}/>
@@ -108,6 +110,7 @@ const mapStateToProps = state => ({
     locations: state.locations,
     mergedData: state.mergedData,
     selectedDSPS: state.selectedDSPS,
+    modalInfo: state.modalInfo,
 })
 
 const mapDispatchToProps = (dispatch: Function)=>({
@@ -122,6 +125,9 @@ const mapDispatchToProps = (dispatch: Function)=>({
     
     sendMerged(event){
         dispatch(setMerged(event))},
+
+    sendModalInfo(event){
+        dispatch(setModalInfo(event))},
         
     }
 )

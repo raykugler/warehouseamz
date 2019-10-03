@@ -1,4 +1,4 @@
-import { SET_MAIN, SET_LOCATIONS, SET_ROUTES, SET_MERGED, SET_DISPLAY_DATA, SET_DSP_MENU, SET_SELECTED_DSPS } from './actions';
+import { SET_MAIN, SET_LOCATIONS, SET_ROUTES, SET_MERGED, SET_DISPLAY_DATA, SET_DSP_MENU, SET_SELECTED_DSPS, SET_MODAL_INFO } from './actions';
 import { SET_LOGIN } from './actions';
 import { SET_DISPLAY } from './actions';
 
@@ -28,4 +28,7 @@ export function setDSPData(dsps){
 }
 export function setSelectedDSPS(selectedDSPS){
     return {type: SET_SELECTED_DSPS, payload: selectedDSPS}
+}
+export function setModalInfo(modalInfo){
+    return {type: SET_MODAL_INFO, payload: modalInfo};
 }

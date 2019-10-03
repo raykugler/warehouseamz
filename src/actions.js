@@ -7,3 +7,4 @@ export const SET_MERGED = 'SET_MERGED';
 export const SET_DSP_MENU = 'SET_DSP_MENU';
 export const SET_DISPLAY_DATA = 'SET_DISPLAY_DATA';
 export const SET_SELECTED_DSPS = 'SET_SELECTED_DSPS';
+export const SET_MODAL_INFO = 'SET_MODAL_INFO';
