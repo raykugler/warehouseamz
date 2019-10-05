@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     padding-top: 10%;
+    background-color: #cbeeef;
 }
 
 .routeHolder{
@@ -25,6 +26,8 @@
     justify-self: center;
     text-align: center;
     border: 1px solid black;
+    background-color: #7EB3BF;
+    color: white;
 }
 .dspTextHolder{
     grid-column: 2/3;
@@ -34,6 +37,8 @@
     justify-self: center;
     text-align: center;
     border: 1px solid black;
+    background-color: #7EB3BF;
+    color: white;
 }
 
 .routeLocation{
@@ -44,4 +49,7 @@
     justify-self: baseline;
     text-align: center;
     border: 1px solid black ;
+    background-color: #7EB3BF;
+    color: white;
+    
 }

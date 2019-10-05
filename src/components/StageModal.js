@@ -52,7 +52,7 @@ class StageModal extends Component {
                 routeHolder.appendChild(routeLocation);
             let unique = areaInfo[i]._id;
             let modalSubmitButton = document.createElement('BUTTON');
-            let modalSubmitButtonText = document.createTextNode('Make Changes')
+            let modalSubmitButtonText = document.createTextNode('MAKE CHANGES')
                 modalSubmitButton.appendChild(modalSubmitButtonText);
 
                 modalSubmitButton.classList.add('modalSubmitButton');
@@ -66,7 +66,16 @@ class StageModal extends Component {
  
     }
     openRoute=(e)=>{
-        console.log(e)
+        console.log(e);
+        console.log(this.props.mergedData);
+        let data = this.props.mergedData;
+        for(let i = 0; i < data.lanes.length; i++){
+            let lane = data.lanes[i].locations;
+            console.log(lane);
+            for(let l = 0; l < lane.length; l++){
+                console.log(lane[l])
+            }
+        }
     }
 
 
@@ -81,7 +90,9 @@ class StageModal extends Component {
     );
 }}
  const mapStateToProps = state => ({
-     modalInfo: state.modalInfo});
+     modalInfo: state.modalInfo,
+     mergedData: state.mergedData,
+    });
 
 // const mapDispatchToProps = (dispatch: Function)=>({
 //     handleLogin(event){

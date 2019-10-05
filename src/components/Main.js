@@ -18,6 +18,7 @@ const customStyles = {
       transform             : 'translate(-50%, -50%)',
       height                : '700px',
       width                 : '800px',
+      backgroundColor       : '#cbeeef'
     }
   };
 
